@@ -3,7 +3,6 @@ from django.db import models
 
 class Marca(models.Model):
     nome = models.CharField(max_length=50)
-    nacionalidade = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.nome.upper()
@@ -51,3 +50,18 @@ class Veiculo(models.Model):
     
     class Meta:
         verbose_name = "Veículo"
+        
+class Modelo(models.Model):
+    nome = models.CharField(max_length=100)
+    categoria = models.ForeignKey(
+        Categoria, on_delete=models.PROTECT, related_name="modelos"
+    )
+    marca = models.ForeignKey(
+        Marca, on_delete=models.PROTECT, related_name="modelos"
+    )
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Modelos"
