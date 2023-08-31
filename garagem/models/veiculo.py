@@ -11,7 +11,6 @@ class Veiculo(models.Model):
     )
     ano = models.IntegerField(null=True, blank=True)
     acessorios = models.ManyToManyField(Acessorio, related_name="veiculos")
-
     cor = models.ForeignKey(
         Cor, on_delete=models.PROTECT, related_name="veiculos"
     )
@@ -20,8 +19,8 @@ class Veiculo(models.Model):
         on_delete=models.PROTECT,
         related_name="veiculos",
         default=2,
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
     )
     imagem = models.ForeignKey(
         Image,
