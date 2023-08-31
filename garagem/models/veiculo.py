@@ -1,7 +1,7 @@
 from django.db import models
 
 from garagem.models import Cor, Modelo, Acessorio
-
+from uploader.models import Image
 
 
 class Veiculo(models.Model):
@@ -21,6 +21,14 @@ class Veiculo(models.Model):
         default=2,
         null=True,
         blank=True,
+    )
+    imagem = models.ForeignKey(
+        Image,
+        related_name="+",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        default=None,
     )
 
     def __str__(self):
