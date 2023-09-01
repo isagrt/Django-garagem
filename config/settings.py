@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
+    "drf_spectacular",
     "rest_framework",
     "uploader",
     "usuario",
@@ -48,7 +49,16 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "config.urls"
-APPEND_SLASH = True
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Garagem API",
+    "DESCRIPTION": "API para gerenciamento da minha garagem.",
+    "VERSION": "1.0.0",
+}
 
 TEMPLATES = [
     {

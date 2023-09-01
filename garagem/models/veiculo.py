@@ -22,13 +22,9 @@ class Veiculo(models.Model):
         null=False,
         blank=False,
     )
-    imagem = models.ForeignKey(
+    imagem = models.ManyToManyField(
         Image,
         related_name="+",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        default=None,
     )
 
     def __str__(self):
